@@ -16,7 +16,10 @@ export default function MusicScreen() {
           <Text style={styles.subText}>De músicas :D</Text>
         </View>
         //Músicas
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          style={stylesMusic.scrollView}
+          contentContainerStyle={stylesMusic.scrollContent}
+          showsVerticalScrollIndicator={false}>
           {musicasDB.map((item) => (
             <MusicComponent
               key={item.id}
@@ -26,13 +29,13 @@ export default function MusicScreen() {
             />
           ))}
         </ScrollView>
-        //Navbar)
-        <NavBarMusicComponent
-          currentMusic={currentMusic}
-          musicasDB={musicasDB}
-          onMusicChange={(newMusic) => setCurrentMusic(newMusic)}
-        />
       </View>
+      //Navbar)
+      <NavBarMusicComponent
+        currentMusic={currentMusic}
+        musicasDB={musicasDB}
+        onMusicChange={(newMusic) => setCurrentMusic(newMusic)}
+      />
       <View style={styles.footer}></View>
     </View>
   );
@@ -43,6 +46,13 @@ const stylesMusic = StyleSheet.create({
     flex: 1,
     width: '100%',
     flexDirection: 'column',
+    alignItems: 'center',
+  },
+  scrollView: {
+    flex: 1,
+    width: '100%',
+  },
+  scrollContent: {
     alignItems: 'center',
   },
 });
